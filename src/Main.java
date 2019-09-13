@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.Scanner;
@@ -11,37 +12,38 @@ public class Main {
     public static void main(String[] args) {
         System.out.print("\nEnter x, belonging to [-1,1[ : ");
         Scanner scan = new Scanner(System.in);
-        double x = scan.nextDouble();
+        BigDecimal x = scan.nextBigDecimal();
         System.out.print("Enter precision: ");
-        int precision = scan.nextInt();
+        BigInteger precision = scan.nextBigInteger();
         System.out.println();
         System.out.println("\n\nPrecised value is: " + new Serie(x).calculate(precision));
-        System.out.print("Calculated value is: " + sqrt(1+x));
+        System.out.print("Calculated value is: " + sqrt(1+x.doubleValue()));
     }
 }
 
 class Serie{
-    private double x;
-    Serie(double _x) throws RuntimeException{
-        if (_x < -1. || _x> 1.){
+    private BigDecimal x;
+    Serie(BigDecimal _x) throws RuntimeException{
+        if (_x.compareTo(BigDecimal.valueOf(-1.)) < 0 || _x.compareTo(BigDecimal.valueOf(1.)) > 0)
+        {
             throw new RuntimeException("x should belong to [-1,1) !!!");
         }
-        this.x= _x;
+        this.x = _x;
     }
-    BigDecimal calculate(int precision){
-        BigDecimal denominator = new BigDecimal(10).pow(precision);
-        BigDecimal epsilon = new BigDecimal(1).divide(denominator, precision, RoundingMode.HALF_EVEN);
-        BigDecimal element = new BigDecimal(this.x / 2 );
+    BigDecimal calculate(BigInteger precision){
+        BigDecimal denominator = new BigDecimal(10).pow(precision.intValue());
+        BigDecimal epsilon = new BigDecimal(1).divide(denominator, precision.intValue(), RoundingMode.HALF_EVEN);
+        BigDecimal element = this.x.divide(BigDecimal.valueOf(2), precision.intValue(), RoundingMode.HALF_EVEN);
         BigDecimal sum = new BigDecimal(1);
-        int counter = 1;
-        int el = -1;
-        while (element.compareTo(epsilon) > 0){
-            sum = sum.add(new BigDecimal(-1).pow((counter+1)%2).multiply(element));
-            el += 2;
-            counter += 1;
-            BigDecimal coefficient = new BigDecimal((el * this.x) / (2*counter)  );
+        BigInteger counter = BigInteger.ONE;
+        BigDecimal el = new BigDecimal("-1");
+        while (element.abs().compareTo(epsilon) > 0){
+            sum = sum.add(new BigDecimal(-1).pow(counter.add(BigInteger.ONE).remainder(BigInteger.TWO).intValue()).multiply(element));
+            el = el.add(new BigDecimal("2"));
+            counter = counter.add(BigInteger.ONE);
+            BigDecimal coefficient = el.multiply(this.x.divide(new BigDecimal(counter.multiply(BigInteger.TWO)), precision.intValue(), RoundingMode.HALF_EVEN)  );
             element = element.multiply(coefficient);
         }
-        return (new BigDecimal(sum.toString(), new MathContext(precision)));
+        return (new BigDecimal(sum.toString(), new MathContext(precision.intValue())));
     }
 }
