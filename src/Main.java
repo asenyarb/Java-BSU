@@ -26,7 +26,7 @@ class Serie{
     Serie(BigDecimal _x) throws RuntimeException{
         if (_x.compareTo(BigDecimal.valueOf(-1.)) < 0 || _x.compareTo(BigDecimal.valueOf(1.)) > 0)
         {
-            throw new RuntimeException("x should belong to [-1,1) !!!");
+            throw new RuntimeException("x should belong to (-1,1) !!!");
         }
         this.x = _x;
     }
@@ -44,6 +44,6 @@ class Serie{
             BigDecimal coefficient = el.multiply(this.x.divide(new BigDecimal(counter.multiply(BigInteger.TWO)), precision.intValue(), RoundingMode.HALF_EVEN)  );
             element = element.multiply(coefficient);
         }
-        return (new BigDecimal(sum.toString(), new MathContext(precision.intValue())));
+        return (new BigDecimal(sum.toString(), new MathContext(precision.intValue()+1)));
     }
 }
