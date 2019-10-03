@@ -1,7 +1,7 @@
 # Lab_2.Formatter_class
 This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
-##Lab 2 - **Formatter_class**.
+## Lab 2 - **Formatter_class**.
 Variant 4.
 # Problem
 Use Formatter class for Lab 1.
