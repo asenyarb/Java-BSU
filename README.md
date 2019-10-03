@@ -1,7 +1,7 @@
 # Lab_1.TaylorSeries
 This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
-##Lab 1 - **BigDecimal, BigInteger**.
+## Lab 1 - **BigDecimal, BigInteger**.
 Variant 4.
 # Problem
 Approximate *given function* using Taylor Series with certain accuracy.
