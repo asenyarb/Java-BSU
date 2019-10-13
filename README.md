@@ -1,7 +1,7 @@
-# Lab_2.Strings_processing
+# Lab_4.Strings_processing
 This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
-##Lab 2 - **String, StringBuffer, StringTokenizer classes**.
+## Lab 4 - **String, StringBuffer, StringTokenizer classes**.
 Variant 4.
 # Problem
 The program asks for two lines and an integer number P to search for. 
