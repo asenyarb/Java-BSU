@@ -1,7 +1,7 @@
 # Lab_3.MatrixProcessing
 This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
-##Lab 3 - **Two dimensional arrays processing**
+## Lab 3 - **Two dimensional arrays processing**
 Variant 4
 # Problem
 An integer matrix of the order **n*****m** is given.
