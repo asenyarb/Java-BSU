@@ -1,13 +1,22 @@
-# Java-BSU
-## Every lab is located on its own branch.
+# Lab_6.Date
+This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
+### Lab 6 - Date,  Calendar,  DateFormat,  Formatter,  SimpleDateFormat 
 
-A repository with the JAVA labs (BSU/FAMCS).
+#### Task
+For **Calendar** display and modify:
+- Month, hour, minutes
 
-## Structure 
-- Master branch only includes `README.md` and default `.gitignore` for **IntelliJ IDEA**.
-### Every lab branch includes:
-- `.idea/` - **IntelliJ IDEA** project settings
-- `src/` - Project *source code*
-- `README.md` - Lab description with the *main task* and, optionally, comments on the solution.
-- `.gitignore`
+For **SimpleDateFormat** display:
+- Year (4-digit number)
+- 4-letter abbreviation of a month in Russian localization and 3-letter abbreviation of a month in English (Feb)
+- The day of the month with the leading zeros
+- Time in 12-hour format without leading zeros
+- Minutes without leading zeros
+
+For **Formatter** display:
+- Full day of the week name
+- Full month name
+- Day of the month as a decimal(1 to 31)
+- Regional equivalent of AM or RM in lower case letters
+- Seconds (00 to 60)
