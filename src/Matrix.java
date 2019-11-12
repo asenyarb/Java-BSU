@@ -1,38 +1,21 @@
-import javax.swing.*;
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.*;
 
 import static java.lang.Math.abs;
 
-public class Matrix {
+class Matrix {
 
     private int rowNumber;
     private int columnNumber;
     private Float[][] matrix;
 
-    public Matrix(int n, int m) throws ArrayIndexOutOfBoundsException {
+    Matrix(int n, int m) throws ArrayIndexOutOfBoundsException {
        if (n < 0 || m < 0){ throw new ArrayIndexOutOfBoundsException("Matrix size < 0!");}
         rowNumber = n;
         columnNumber = m;
         matrix = new Float [rowNumber][columnNumber];
-        for (Float[] row : matrix)
-            for (Float element: row)
-                element = 0.f;
     }
 
-    public Matrix (Matrix matrix2) throws IOException{
-        rowNumber = matrix2.getMatrixSize().get(0);
-        columnNumber = matrix2.getMatrixSize().get(1);
-        Float[][] matrix = new Float[rowNumber][columnNumber];
-        Float[][] fMatrix2 = matrix2.get();
-        for (int i = 0; i < rowNumber; i++)
-            for (int j = 0; j < columnNumber; j++)
-                matrix[i][j] = fMatrix2[i][j];
-    }
-
-
-    public Matrix (){
+    Matrix (){
         matrix = new Float [2][2];
         rowNumber = 2;
         columnNumber = 2;
@@ -43,21 +26,7 @@ public class Matrix {
         }
     }
 
-   public Matrix (Float[][] matrix){
-       this.rowNumber = matrix.length;
-       this.columnNumber = (rowNumber == 0)?0:matrix[0].length;
-       this.matrix = Arrays.copyOf(matrix, rowNumber);
-   }
-
-    public Float[][] get(){
-        Float[][] safe_matrix = new Float[rowNumber][columnNumber];
-        for (int i = 0; i < rowNumber; i++)
-            for (int j = 0; j < columnNumber; j++)
-                safe_matrix[i][j] = matrix[i][j];
-        return safe_matrix;
-    }
-
-    public void fillWithRandomValues(){
+    void fillWithRandomValues(){
         Random randNumber = new Random();
         for (int i = 0; i < rowNumber; i++) {
             for (int j = 0; j < columnNumber; j++) {
@@ -66,42 +35,7 @@ public class Matrix {
         }
     }
 
-    public List<Integer> getMatrixSize(){
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(rowNumber);
-        list.add(columnNumber);
-        return list;
-    }
-
-    public final void getMatrixInDecimalFormat(){
-        final String pattern = "%";
-        DecimalFormat myFormatter = new DecimalFormat(pattern);
-        final String pattern2 = "¤";
-        DecimalFormat myFormatter2 = new DecimalFormat(pattern2);
-        final String pattern3 = "";
-        DecimalFormat myFormatter3 = new DecimalFormat(pattern3);
-        for (int i = 0; i < rowNumber; i++) {
-            System.out.print("[");
-            for (int j = 0; j < columnNumber; j++) {
-                switch (i){
-                    case(0):
-                        String output = myFormatter.format(matrix[i][j] );
-                        System.out.print(output + "\t");
-                        break;
-                    case(1):
-                        String output2 = myFormatter2.format(matrix[i][j]);
-                        System.out.print(output2 + "\t");
-                        break;
-                    default:
-                        String output3 = myFormatter3.format(matrix[i][j]);
-                        System.out.print(output3 + "\t");
-                }
-            }
-            System.out.println("]");
-        }
-    }
-
-    public final void out(){
+    final void out(){
         for (Float[] row: matrix){
             System.out.print("[ ");
             for (Float element: row){
@@ -111,7 +45,7 @@ public class Matrix {
         }
     }
 
-    public void minElementInTheLowerRightAngle() {
+    void minElementInTheLowerRightAngle() {
         // Searching for minimum element
         Float min = Float.MAX_VALUE;
         int minRowIndex = 0;
@@ -140,26 +74,14 @@ public class Matrix {
         }
     }
 
-    public void rowCopy(int rowNumber, int from, int to){
-       Float[] array = Arrays.copyOfRange(matrix[rowNumber], from, to);
-       System.out.println(Arrays.toString(array));
-    }
-
-    public void partialSort(int from, int to) throws ArrayIndexOutOfBoundsException {
+    void partialSort(int from, int to) throws ArrayIndexOutOfBoundsException {
         if (to < 1 || to > rowNumber) throw new ArrayIndexOutOfBoundsException("'to' index out of Bounds!!!");
         if (from < 0 || from > rowNumber) throw new ArrayIndexOutOfBoundsException("'from' index out of bounds!!!");
         if (to < from) throw new ArrayIndexOutOfBoundsException("'to' index < 'from'  index!!!");
-        Arrays.sort(matrix[0], from, to + 1, new Comparator<Float>() {
-            @Override
-            public int compare(Float o1, Float o2) {
-                return -o1.compareTo(o2);
-            }
-        });
+        Arrays.sort(matrix[0], from, to + 1, (o1, o2) -> -o1.compareTo(o2));
     }
 
-    public List<Integer> find(Float x){
-        /**
-         *Return a list containing row and column indexes of element*/
+    List<Integer> find(Float x){
         Float[] foundElements = new Float[rowNumber];
         Integer[] foundColumnIndexes = new Integer[rowNumber];
         for (int rowIndex = 0; rowIndex < rowNumber; rowIndex++){
@@ -173,15 +95,15 @@ public class Matrix {
         int foundRowIndex = Arrays.binarySearch(foundElements, x);
         if (foundRowIndex < 0)
             foundRowIndex = abs(foundRowIndex) - 2;
-        List<Integer> indexesList = new ArrayList<Integer>();
+        List<Integer> indexesList = new ArrayList<>();
         indexesList.add(abs(foundRowIndex));
         indexesList.add(foundColumnIndexes[abs(foundRowIndex)]);
         return indexesList;
     }
 
-    public void sort(){
+    void sort(){
         // temporary matrix of size n^2
-        Float temp[] = new Float[rowNumber * columnNumber];
+        Float[] temp = new Float[rowNumber * columnNumber];
         int k = 0;
 
         // copy the elements of matrix
