@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -20,9 +19,9 @@ public class Main {
         String [] nonDecimalsArray = new String[st.countTokens()];
         int decimalIndex = 0;
         int nonDecimalIndex = 0;
-        Integer mainIndex = -1;
+        int mainIndex = -1;
         Integer pIndex = null;
-        Integer decimal = null;
+        Integer decimal;
         while (st.hasMoreTokens()){
             mainIndex++;
             var token = st.nextToken();
@@ -81,7 +80,7 @@ public class Main {
         }
         System.out.println();
 
-        StringBuffer strb = new StringBuffer(line);
+        StringBuilder strb = new StringBuilder(line);
         // Duplicate P value
         if (decimalArray.length == 0){
             System.out.println("There are no decimals in line. Nothing to duplicate");
