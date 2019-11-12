@@ -1,6 +1,5 @@
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.text.Normalizer;
 import java.util.Formatter;
 import java.util.Scanner;
 import java.util.Random;
