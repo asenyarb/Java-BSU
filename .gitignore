@@ -7,7 +7,6 @@
 
 # IntelliJ IDEA
 out/
-*.iml
 
 # Compiled class file
 *.class

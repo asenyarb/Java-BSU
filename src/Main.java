@@ -9,11 +9,11 @@ public class Main {
         while (true)
         {
             System.out.println("1. Check for consistency\n2. Change regex pattern\n0. Exit\n");
-            int ans = Functions.read_number(in,0, 2);
+            int ans = Functions.read_number(in);
             switch(ans) {
                 case 1:
                     System.out.println("1. Read lines from file\n2. Read a line from console\n0. Exit");
-                    int read_from = Functions.read_number(in, 0, 2);
+                    int read_from = Functions.read_number(in);
                     switch (read_from) {
                         case 1:
                             Functions.file_lines_match(reg, in);

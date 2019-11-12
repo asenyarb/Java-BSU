@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.io.*;
 
@@ -33,7 +32,7 @@ class Functions {
         }
         String line;
         int line_counter = 0;
-        StringBuilder buffer = new StringBuilder("");
+        StringBuilder buffer = new StringBuilder();
         while ((line = file_in.readLine()) != null){
             line_counter++;
             buffer.append("Line ").append(line_counter).append(": ").append(line);
@@ -73,7 +72,7 @@ class Functions {
         }
     }
 
-    static int read_number(Scanner in, int number_from, int number_to){
+    static int read_number(Scanner in){
         int read_from;
         while (true){
             try {
@@ -83,15 +82,11 @@ class Functions {
                 System.out.println("The value you entered is not a number! Try again.");
                 continue;
             }
-            if (read_from < number_from || read_from > number_to )
+            if (read_from < 0 || read_from > 2)
                 System.out.println("Invalid operation number. Try again.");
             else
                 break;
         }
         return read_from;
-    }
-
-    private void write_to_file(){
-
     }
 }
