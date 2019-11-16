@@ -1,13 +1,8 @@
-# Java-BSU
-## Every lab is located on its own branch.
+# Lab_8.Intersecting_segments
+This is a branch of the [Java-BSU](https://github.com/asenyarb/Java-BSU/) repository.
 
+## Lab 8 - **Intersecting segments**.
+Variant 4.
+# Problem
 
-A repository with the JAVA labs (BSU/FAMCS).
-
-## Structure 
-- Master branch only includes `README.md` and default `.gitignore` for **IntelliJ IDEA**.
-### Every lab branch includes:
-- `.idea/` - **IntelliJ IDEA** project settings
-- `src/` - Project *source code*
-- `README.md` - Lab description with the *main task* and, optionally, comments on the solution.
-- `.gitignore`
+N segments are specified on the plane. Find the intersection points of the two segments. 
