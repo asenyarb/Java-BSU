@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="12.0.2" class="java.beans.XMLDecoder">
+ <object class="Hippodrome.Horse">
+  <void property="age">
+   <int>78</int>
+  </void>
+  <void property="birth_date">
+   <object class="java.util.Date">
+    <long>965332800000</long>
+   </object>
+  </void>
+  <void property="experience">
+   <int>109</int>
+  </void>
+  <void property="name">
+   <string>AKlava</string>
+  </void>
+  <void property="owner">
+   <string>Mamazzz Industry</string>
+  </void>
+ </object>
+</java>
